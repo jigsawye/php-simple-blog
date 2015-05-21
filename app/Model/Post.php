@@ -31,7 +31,7 @@
         {
             $params = array_merge($arr, [':id' => $id]);
 
-            $this->sql = 'UPDATE posts SET title = :title, body = :body WHERE id = :id '
+            $this->sql = 'UPDATE posts SET title = :title, body = :body WHERE id = :id';
             $this->params = $params;
 
             return $this->get();
