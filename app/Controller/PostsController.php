@@ -47,7 +47,7 @@
         {
             $this->loadModel('Post');
 
-            $posts->update([
+            $posts->update($this->id ,[
                 'title' => $_POST['title'],
                 'body' => $_POST['body']
             ]);
