@@ -2,52 +2,65 @@
 
     class PostsController extends Controller
     {
-        private $post;
 
-        public function __construct($params)
-        {
-            parent::__construct($params);
-            
-            require_once __DIR__ . '/../Model/Post.php';
-            $this->post = new Post;
-        }
+        protected $url = 'post';
 
         public function index()
         {
+            $this->loadModel('Post');
             $posts = $this->post->all();
 
-            $this->loadView('posts.index', compact('posts'));
+            return $this->loadView('posts.index', compact('posts'));
         }
 
         public function show()
         {
+            $this->loadModel('Post');
             $post = $this->post->find($this->id);
-            
+
             return $this->loadView('posts.show', compact('post'));
         }
 
         public function create()
         {
-            $this->loadView('posts.create');
+            return $this->loadView('posts.create');
         }
 
         public function store()
         {
-            // $posts = $posts->create([]);
+            $this->loadModel('Post');
+
+            $posts = $posts->create([
+                'title' => $_POST['title'],
+                'body' => $_POST['body']
+            ]);
+
+            return redirectTo();
         }
 
         public function edit()
         {
-            $this->loadView('posts.edit');
+            return $this->loadView('posts.edit');
         }
 
         public function update()
         {
-            // $posts = $posts->update([]);
+            $this->loadModel('Post');
+
+            $posts->update([
+                'title' => $_POST['title'],
+                'body' => $_POST['body']
+            ]);
+
+            return redirectTo();
         }
 
         public function delete()
         {
-            // $posts = $posts->delete($id);
+            $this->loadModel('Post');
+
+            $posts = $posts->delete($id);
+
+            return redirectTo();
         }
     }
