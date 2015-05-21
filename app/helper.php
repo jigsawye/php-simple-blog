@@ -1,8 +1,8 @@
 <?php
 
-    function redirectTo($url = URL . 'posts')
+    function redirectTo($url = '')
     {
-        header('Location: ' . $url);
+        header('Location: ' . URL . $url);
     }
 
     function loadView($view) {

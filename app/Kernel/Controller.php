@@ -14,9 +14,9 @@
             }
         }
 
-        protected function redirectTo($url = URL)
+        protected function redirectTo($url = 'posts')
         {
-            return header('Location: ' . $url);
+            return header('Location: ' . URL . $url);
         }
 
         protected function loadView($view, $data)
