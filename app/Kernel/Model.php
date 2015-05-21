@@ -18,6 +18,6 @@
 
             $st->execute($this->params);
 
-            return $st->fetchAll(PDO::FETCH_ASSOC);
+            return $st;
         }
     }

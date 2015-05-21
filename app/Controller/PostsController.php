@@ -18,7 +18,8 @@
             $this->loadModel('Post');
             $post = $this->post->find($this->id);
 
-            return $this->loadView('posts.show', compact('post'));
+            return $post ? $this->loadView('posts.show', compact('post')) : redirectTo();
+
         }
 
         public function create()
@@ -30,9 +31,9 @@
         {
             $this->loadModel('Post');
 
-            $posts = $posts->create([
-                'title' => $_POST['title'],
-                'body' => $_POST['body']
+            $posts = $this->post->create([
+                ':title' => $_POST['title'],
+                ':body' => $_POST['body']
             ]);
 
             return redirectTo();
@@ -40,16 +41,19 @@
 
         public function edit()
         {
-            return $this->loadView('posts.edit');
+            $this->loadModel('Post');
+            $post = $this->post->find($this->id);
+
+            return $post ? $this->loadView('posts.edit', compact('post')) : redirectTo();
         }
 
         public function update()
         {
             $this->loadModel('Post');
 
-            $posts->update($this->id ,[
-                'title' => $_POST['title'],
-                'body' => $_POST['body']
+            $this->post->update($this->id ,[
+                ':title' => $_POST['title'],
+                ':body' => $_POST['body']
             ]);
 
             return redirectTo();
@@ -59,7 +63,7 @@
         {
             $this->loadModel('Post');
 
-            $posts = $posts->delete($id);
+            $posts = $this->post->delete($this->id);
 
             return redirectTo();
         }
