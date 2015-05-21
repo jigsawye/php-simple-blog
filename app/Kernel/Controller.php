@@ -7,14 +7,16 @@
 
         public function __construct($params)
         {
-            if (preg_match('/[0-9]+/', $params[1])) {
-                $this->id = $params[1];
+            if (count($params) >= 2) {
+                if (preg_match('/[0-9]+/', $params[1])) {
+                    $this->id = $params[1];
+                }
             }
         }
 
         protected function redirectTo($url = URL)
         {
-            header('Location: ' . $url);
+            return header('Location: ' . $url);
         }
 
         protected function loadView($view, $data)
