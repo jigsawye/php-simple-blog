@@ -6,6 +6,9 @@
 </head>
 <body>
     <h1>Show Post</h1>
-    <?=var_dump($post)?>
+    <h1>Title:<?=htmlspecialchars($post['title'])?></h1>
+    <p><?=nl2br(htmlspecialchars($post['body']))?></p>
+    <a href="<?=URL . 'posts/' . $post['id'] . '/edit' ?>">Edit & Delete</a>
+    <a href="<?=URL . 'posts'?>">Show All Posts</a>
 </body>
 </html>

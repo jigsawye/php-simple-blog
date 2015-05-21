@@ -6,5 +6,6 @@
 </head>
 <body>
     <h1>I'm Home Page!</h1>
+    <a href="<?=URL . 'posts'?>">Show All Posts</a>
 </body>
 </html>
