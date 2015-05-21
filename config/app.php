@@ -1,5 +1,5 @@
 <?php
-    define('URL', 'localhost/php-simple-blog/public/');
+    define('URL', 'http://localhost/php-simple-blog/public/index.php/');
 
     define('DB', 'mysql');
     define('HOST', 'localhost');

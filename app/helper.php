@@ -1,6 +1,6 @@
 <?php
 
-    function redirectTo($url = URL . 'index.php/posts')
+    function redirectTo($url = URL . 'posts')
     {
         header('Location: ' . $url);
     }
