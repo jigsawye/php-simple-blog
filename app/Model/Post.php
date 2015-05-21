@@ -6,7 +6,7 @@
         {
             $this->sql = 'SELECT * FROM posts';
 
-            return $this->get();
+            return $this->get()->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public function find($id)
@@ -16,7 +16,7 @@
                 ':id' => $id
             ];
             
-            return $this->get();
+            return $this->get()->fetch(PDO::FETCH_ASSOC);
         }
 
         public function create($arr)
